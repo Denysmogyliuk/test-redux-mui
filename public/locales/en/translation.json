@@ -1,0 +1,17 @@
+{
+    "main": "Main",
+    "news": "News",
+    "profile": "Profile",
+    "login": "Login",
+    "password": "Password",
+    "logout": "Logout",
+    "eng": "Eng",
+    "ukr": "Ukr",
+    "hide": "Hide",
+    "download": "Download",
+    "name": "Name", 
+    "more": "Show More",
+    "loading": "Loading...",
+    "authorizeError": "Login or password is wrong",
+    "copyright": "Made by Denys Mogyliuk"
+  }
