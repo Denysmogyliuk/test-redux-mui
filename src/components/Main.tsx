@@ -1,9 +1,5 @@
-import { useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import * as React from "react";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
+import { FC } from "react";
+import {Box, ImageList, ImageListItem} from "@mui/material/";
 
 const ITEM_DATA = [
   {
@@ -65,7 +61,7 @@ function StandardImageList() {
       cols={3}
     >
       {ITEM_DATA.map((item) => (
-        <ImageListItem key={item.img}>
+        <ImageListItem key={item.title}>
           <img
             src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
             srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
@@ -78,7 +74,7 @@ function StandardImageList() {
   );
 }
 
-export default function Main() {
+const Main: FC = () => {
   return (
     <Box
       sx={{
@@ -92,3 +88,5 @@ export default function Main() {
     </Box>
   );
 }
+
+export default Main;

@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import LoginForm from "./LoginForm";
+import { FC, useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "app/hooks";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { authenticate, checkAuthStatus, logout } from "../api/auth";
-import Modalus from "./Modal";
+import { selectIsAuth } from "../app/features/auth";
+import { logout } from "../app/features/auth/slice";
+import {Box, IconButton, Typography, Menu, Avatar, Tooltip, MenuItem } from "@mui/material/";
+import LoginForm from "./LoginForm";
+import Modal from "./Modal";
 
-export default function UserSettings() {
-  const { t, i18n } = useTranslation();
+const UserSettings: FC = () => {
+  const { t } = useTranslation();
+  const isAuthenticated = useAppSelector(selectIsAuth);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const isAuth = useAppSelector(selectIsAuth);
+  const dispatch = useAppDispatch();
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
-
-  const handleOpenUserMenu = (event) => {
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
@@ -25,19 +25,25 @@ export default function UserSettings() {
     setAnchorElUser(null);
   };
 
-  const handleOpenLogin = (event) => {
+  const handleOpenLogin = () => {
     handleCloseUserMenu();
     handleOpen();
   };
 
   const handleLogout = () => {
+    dispatch(logout());
     handleCloseUserMenu();
-    logout();
+    window.location.pathname === "/profile" && navigate("/");
   };
 
-  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    isAuth && setOpen(false);
+  }, [isAuth]);
 
   return (
     <Box sx={{ flexGrow: 0 }}>
@@ -62,7 +68,7 @@ export default function UserSettings() {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {checkAuthStatus() ? (
+        {isAuthenticated ? (
           <MenuItem onClick={handleLogout}>
             <Typography textAlign="center">{t("logout")}</Typography>
           </MenuItem>
@@ -72,9 +78,12 @@ export default function UserSettings() {
           </MenuItem>
         )}
       </Menu>
-      <Modalus open={open} onClose={handleClose}>
-        <LoginForm></LoginForm>
-      </Modalus>
+
+      <Modal open={open} onClose={handleClose}>
+        <LoginForm />
+      </Modal>
     </Box>
   );
 }
+
+export default UserSettings;

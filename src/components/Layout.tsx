@@ -1,9 +1,9 @@
-import React from "react";
+import { FC } from "react";
 import { Outlet } from "react-router-dom";
 import Nav from "./Nav";
 import Copyright from "./Copyright";
 
-export default function Layout() {
+const Layout: FC = () => {
   return (
     <>
       <header>
@@ -27,3 +27,5 @@ export default function Layout() {
     </>
   );
 }
+
+export default Layout;

@@ -1,7 +1,8 @@
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function Copyright() {
-  const { t, i18n } = useTranslation();
+const Copyright: FC = () => {
+  const { t } = useTranslation();
 
   return (
     <div
@@ -21,13 +22,10 @@ export default function Copyright() {
         {t("copyright")}
       </a>
       <a href="https://www.linkedin.com/in/denys-mogyliuk-796630216/">
-        <img
-          className="copyright__link-image"
-          src={"./logos/linked.png"}
-          alt={"linked"}
-          height="20"
-        />
+        <img src="./images/logos/linked.png" alt="linked" height="20" />
       </a>
     </div>
   );
 }
+
+export default Copyright;
