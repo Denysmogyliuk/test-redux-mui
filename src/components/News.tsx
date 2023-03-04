@@ -4,7 +4,7 @@ import NewsCard from "./NewsCard";
 import { Box, Grid } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useTranslation } from "react-i18next";
-
+import { deleteTopic, fetchNewsById } from "app/features/news/actions";
 import {
   fetchNews,
   selectIsNewsLoading,
@@ -12,7 +12,6 @@ import {
   selectMaxId,
   selectErrorMessage,
 } from "../app/features/news";
-import { deleteTopic, fetchNewsById } from "app/features/news/actions";
 
 const INITIAL_NEWS_VALUE = 6;
 const ADD_NEWS_VALUE = 6;

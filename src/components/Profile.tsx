@@ -1,8 +1,7 @@
-// import { checkAuthStatus, logout } from "../api/auth";
+import React, { FC } from "react";
 import { useAppSelector } from "../app/hooks";
 import { Navigate } from "react-router";
 import { selectIsAuth } from "../app/features/auth";
-import { FC } from "react";
 
 const Profile: FC = () => {
   const isAuth = useAppSelector(selectIsAuth);

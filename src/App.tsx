@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Main, News, Profile, Layout, ScrollToTop } from "./components";
 

@@ -1,7 +1,7 @@
-import { FC, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "app/hooks";
+import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { selectIsAuth } from "../app/features/auth";
 import { logout } from "../app/features/auth/slice";
 import { Box, IconButton, Typography, Menu, Avatar, Tooltip, MenuItem } from "@mui/material/";

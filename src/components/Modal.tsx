@@ -1,6 +1,6 @@
+import { FC } from "react";
 import Box from "@mui/material/Box";
 import ModalBlock from "@mui/material/Modal";
-import { FC } from "react";
 
 const style = {
   position: "absolute",

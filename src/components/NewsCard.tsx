@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 

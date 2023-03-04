@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { RootState } from "app/store";
+import { RootState } from "../../store";
 
 export const all = (state: RootState) => state.news;
 export const selectIds = (state: RootState) => state.news.ids;

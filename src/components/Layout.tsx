@@ -1,7 +1,6 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Outlet } from "react-router-dom";
-import Nav from "./Nav";
-import Copyright from "./Copyright";
+import { Nav, Copyright } from "./";
 
 const Layout: FC = () => {
   return (

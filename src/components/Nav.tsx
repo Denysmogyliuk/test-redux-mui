@@ -1,9 +1,9 @@
-import { FC, useState, CSSProperties } from "react";
+import React, { FC, useState, CSSProperties } from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, MenuItem, Stack } from "@mui/material/";
 import MenuIcon from "@mui/icons-material/Menu";
-import UserSettings from "./UserSettings";
+import { UserSettings } from "./";
 
 const getButtonStyle: CSSProperties | ((props: {
   isActive: boolean;

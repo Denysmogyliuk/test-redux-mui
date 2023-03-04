@@ -1,5 +1,12 @@
-export { default as Main } from "./Main";
-export { default as News } from "./News";
-export { default as Profile } from "./Profile";
+export { default as Authenticated } from "./Authenticated";
+export { default as Copyright } from "./Copyright";
 export { default as Layout } from "./Layout";
+export { default as LoginForm } from "./LoginForm";
+export { default as Main } from "./Main";
+export { default as Modal } from "./Modal";
+export { default as Nav } from "./Nav";
+export { default as News } from "./News";
+export { default as NewsCard } from "./NewsCard";
+export { default as Profile } from "./Profile";
 export { default as ScrollToTop } from "./ScrollToTop";
+export { default as UserSettings } from "./UserSettings";
