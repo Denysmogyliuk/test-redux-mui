@@ -1,12 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { Credentials } from "./types";
 
 const LOGIN = "admin";
 const PASSWORD = "12345";
-
-type Credentials = {
-  username: string,
-  password: string,
-}
 
 const checkCredentials = (data: Credentials) => {
   if (data.username === LOGIN && data.password === PASSWORD) {

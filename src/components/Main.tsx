@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Box, ImageList, ImageListItem } from "@mui/material/";
 
 const ITEM_DATA = [

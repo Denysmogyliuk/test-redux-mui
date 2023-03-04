@@ -1,4 +1,4 @@
-export { fetchNews } from "./actions";
+export { getTopics } from "./actions";
 
 export {
   selectIsNewsLoading,

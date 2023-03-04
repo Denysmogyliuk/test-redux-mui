@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { RelativeRoutingType, To } from "react-router-dom";
 import { selectIsAuth } from "../app/features/auth";

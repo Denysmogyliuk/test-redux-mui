@@ -1,12 +1,12 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import NewsCard from "./NewsCard";
+import { NewsCard } from "./";
 import { Box, Grid } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useTranslation } from "react-i18next";
-import { deleteTopic, fetchNewsById } from "app/features/news/actions";
+import { deleteTopic, getTopicsById } from "app/features/news/actions";
 import {
-  fetchNews,
+  getTopics,
   selectIsNewsLoading,
   selectNews,
   selectMaxId,
@@ -26,15 +26,15 @@ const News: FC = () => {
 
   const handleHide = async (id: number) => {
     await dispatch(deleteTopic(id))
-    await dispatch(fetchNewsById(maxId + 1))
+    await dispatch(getTopicsById(maxId + 1))
   };
 
   const handleShowMore = async () => {
-    dispatch(fetchNews({ start: maxId, limit: ADD_NEWS_VALUE }));
+    dispatch(getTopics({ start: maxId, limit: ADD_NEWS_VALUE }));
   };
 
   useEffect(() => {
-    dispatch(fetchNews({ start: 0, limit: INITIAL_NEWS_VALUE }));
+    dispatch(getTopics({ start: 0, limit: INITIAL_NEWS_VALUE }));
   }, [dispatch]);
 
   if (errorMessage) {

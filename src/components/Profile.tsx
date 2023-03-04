@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { useAppSelector } from "../app/hooks";
 import { Navigate } from "react-router";
 import { selectIsAuth } from "../app/features/auth";

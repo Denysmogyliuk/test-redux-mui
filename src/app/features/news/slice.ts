@@ -1,15 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { toHash, toList } from "../../utils";
-import { fetchNews, deleteTopic, fetchNewsById } from "./actions";
-import { News } from "./types";
-
-type InitialState = {
-  byId: Record<string, News>,
-  ids: string[],
-  isLoading: boolean,
-  error: string | undefined,
-  maxId: number,
-}
+import { getTopics, deleteTopic, getTopicsById } from "./actions";
+import { InitialState } from "./types";
 
 const initialState: InitialState = {
   byId: {},
@@ -29,28 +21,33 @@ export const news = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchNews.pending, (state) => {
+    builder.addCase(getTopics.pending, (state) => {
       state.isLoading = true;
       state.error = "";
     });
-    builder.addCase(fetchNews.fulfilled, (state, action) => {
+    builder.addCase(getTopics.fulfilled, (state, action) => {
       state.isLoading = false;
       state.byId = { ...state.byId, ...toHash(action.payload) };
       state.ids = toList(state.byId);
       state.maxId = Math.max(...state.ids.map(Number));
     });
-    builder.addCase(fetchNews.rejected, (state, action) => {
+    builder.addCase(getTopics.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });
+    builder.addCase(deleteTopic.pending, (state) => {
+      state.isLoading = true;
+    });
     builder.addCase(deleteTopic.fulfilled, (state, { payload }) => {
       const { [payload]: ommited, ...rest } = state.byId;
-
       state.isLoading = false;
       state.byId = rest;
       state.ids = toList(state.byId);
     });
-    builder.addCase(fetchNewsById.fulfilled, (state, { payload }) => {
+    builder.addCase(getTopicsById.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getTopicsById.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.byId[payload.id] = payload;
       state.ids = toList(state.byId);

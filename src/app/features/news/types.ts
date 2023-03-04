@@ -5,3 +5,16 @@ export type News = {
   url: string;
   thumbnailUrl: string;
 }
+
+export type GetTopics = {
+  start: number,
+  limit: number,
+}
+
+export type InitialState = {
+  byId: Record<string, News>,
+  ids: string[],
+  isLoading: boolean,
+  error: string | undefined,
+  maxId: number,
+}

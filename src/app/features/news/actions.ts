@@ -1,13 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { News } from "./types";
+import { GetTopics, News } from "./types";
 
-type FetchNews = {
-  start: number,
-  limit: number,
-}
-
-export const fetchNews = createAsyncThunk<News[], FetchNews, { rejectValue: string }>(
-  "news/fetchNews",
+export const getTopics = createAsyncThunk<News[], GetTopics, { rejectValue: string }>(
+  "news/getTopics",
   async ({ start, limit }, { rejectWithValue }) => {
     try {
       const response = await fetch(
@@ -50,8 +45,8 @@ export const deleteTopic = createAsyncThunk<string, number>(
   }
 );
 
-export const fetchNewsById = createAsyncThunk(
-  "news/fetchNewsById",
+export const getTopicsById = createAsyncThunk(
+  "news/getTopicsById",
   async function (id: number, { rejectWithValue, dispatch }) {
     try {
       const response = await fetch(
