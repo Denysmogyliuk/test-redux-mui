@@ -24,11 +24,11 @@ const LoginForm: FC = () => {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const loginHandler = (evt: any) => {
-    evt.preventDefault();
+  const loginHandler = (event: any) => {
+    event.preventDefault();
     const loginData = {
-      username: evt.target[0].value,
-      password: evt.target[2].value
+      username: event.target[0].value,
+      password: event.target[2].value
     }
     dispatch(authenticate(loginData));
   };
@@ -101,8 +101,6 @@ const LoginForm: FC = () => {
           <AlertTitle>{t("authorizeError")}</AlertTitle>
         </Alert>
       )}
-
-      <Popper open={true} />
     </Box>
   );
 }

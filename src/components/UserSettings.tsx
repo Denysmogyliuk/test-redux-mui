@@ -10,7 +10,7 @@ import Modal from "./Modal";
 
 const UserSettings: FC = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const [open, setOpen] = useState<boolean>(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const { t } = useTranslation();
   const isAuthenticated = useAppSelector(selectIsAuth);
   const navigate = useNavigate();
@@ -26,28 +26,27 @@ const UserSettings: FC = () => {
   };
 
   const handleOpenLogin = () => {
-    handleCloseUserMenu();
-    handleOpen();
+    setAnchorElUser(null);
+    setOpenModal(true)
   };
 
   const handleLogout = () => {
     dispatch(logout());
-    handleCloseUserMenu();
+    setAnchorElUser(null);
     window.location.pathname === "/profile" && navigate("/");
   };
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => {
-    setOpen(false);
+  const handleModalClose = () => {
+    setOpenModal(false);
   };
 
   useEffect(() => {
-    isAuth && setOpen(false);
+    isAuth && setOpenModal(false);
   }, [isAuth]);
 
-  return (
+  return (<>
     <Box sx={{ flexGrow: 0 }}>
-      <Tooltip title="Open settings">
+      <Tooltip title={t("open menu")}>
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
           <Avatar alt="" src="" />
         </IconButton>
@@ -78,11 +77,12 @@ const UserSettings: FC = () => {
           </MenuItem>
         )}
       </Menu>
-
-      <Modal open={open} onClose={handleClose}>
-        <LoginForm />
-      </Modal>
     </Box>
+    <Modal open={openModal} onClose={handleModalClose}>
+      <LoginForm />
+      {/* <h1>HUI HUI HUI HUI</h1> */}
+    </Modal>
+  </>
   );
 }
 

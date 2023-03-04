@@ -52,10 +52,8 @@ export const getTopicsById = createAsyncThunk(
       const response = await fetch(
         `https://jsonplaceholder.typicode.com/photos/${id}`
       );
-      console.log(response);
 
       const data: Promise<News> = await response.json();
-
       return data
     } catch (error: any) {
       return rejectWithValue(error.message);

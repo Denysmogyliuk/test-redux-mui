@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Box, ImageList, ImageListItem } from "@mui/material/";
+import { useTranslation } from "react-i18next";
 
 const ITEM_DATA = [
   {
@@ -75,6 +76,8 @@ function StandardImageList() {
 }
 
 const Main: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
@@ -83,7 +86,7 @@ const Main: FC = () => {
         margin: "50px",
       }}
     >
-      <h1>Main</h1>
+      <h1>{t("main")}</h1>
       <p style={{ width: "600px", textAlign: "justify" }}> Nisi eiusmod exercitation ullamco pariatur anim ad reprehenderit cillum esse eu. Eu esse magna quis fugiat ut minim do aliquip proident veniam non. Enim deserunt et quis consequat Lorem reprehenderit minim officia commodo. Labore qui cupidatat culpa esse commodo adipisicing do sit nulla fugiat commodo sint. Cillum veniam minim deserunt in excepteur occaecat adipisicing exercitation dolor pariatur commodo. Cupidatat ullamco ex in aliqua excepteur consequat occaecat sint cillum qui consectetur ipsum et voluptate. Do adipisicing amet esse qui velit duis amet elit in ex ad.
         Qui nostrud ex fugiat duis esse amet. Id Lorem exercitation est aute amet non dolore labore culpa ea cillum. Elit ullamco magna irure sit. Proident enim sit fugiat amet amet velit cupidatat dolor sint cillum sit adipisicing nostrud cupidatat. Labore qui elit ea consectetur velit consequat voluptate aliquip laboris occaecat. Esse occaecat amet Lorem esse labore elit sint deserunt.
         Occaecat ullamco pariatur ut minim sunt enim ex aliquip. Et quis qui proident officia culpa ea irure proident est deserunt. Occaecat officia sunt ut reprehenderit quis voluptate tempor laboris nulla dolore dolor veniam aliquip deserunt. Sint nulla sit pariatur sit non minim id aliquip quis ea. Proident eu proident nisi laboris ea do et cillum veniam culpa veniam cillum nostrud. Quis cillum mollit veniam in cillum anim velit ut. Pariatur minim minim minim nulla proident quis ad ea excepteur consectetur veniam.
