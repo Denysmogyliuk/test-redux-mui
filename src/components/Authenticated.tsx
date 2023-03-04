@@ -19,7 +19,7 @@ type Props = {
 const Authenticated: FC<Props> = ({ children }) => {
   const isAuth = useSelector(selectIsAuth);
 
-  return isAuth ? <>{children}</> : Navigate({to: "/"});
+  return isAuth ? <>{children}</> : Navigate({ to: "/" });
 }
 
 export default Authenticated;

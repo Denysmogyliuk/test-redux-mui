@@ -1,44 +1,44 @@
-import React, { FC, useState } from "react";
+import { FC, useState, CSSProperties } from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, MenuItem, Stack} from "@mui/material/";
+import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, MenuItem, Stack } from "@mui/material/";
 import MenuIcon from "@mui/icons-material/Menu";
 import UserSettings from "./UserSettings";
 
-const getButtonStyle: React.CSSProperties | ((props: {
+const getButtonStyle: CSSProperties | ((props: {
   isActive: boolean;
   isPending: boolean;
-}) => React.CSSProperties | undefined) | undefined = (props) => {
+}) => CSSProperties | undefined) | undefined = (props) => {
   return props.isActive
-  ? {
-    textDecoration: "none",
-    cursor: "auto",
-    color: "white",
-    borderBottom: "2px solid white",
-  }
-  : {
-    textDecoration: "none",
-    color: "white",
-  };
+    ? {
+      textDecoration: "none",
+      cursor: "auto",
+      color: "white",
+      borderBottom: "2px solid white",
+    }
+    : {
+      textDecoration: "none",
+      color: "white",
+    };
 };
 
-const getBurgerButtonStyle: React.CSSProperties | ((props: {
+const getBurgerButtonStyle: CSSProperties | ((props: {
   isActive: boolean;
   isPending: boolean;
-}) => React.CSSProperties | undefined) | undefined = (prop: any) => {
+}) => CSSProperties | undefined) | undefined = (prop: any) => {
   return prop.isActive
     ? {
-        textDecoration: "none",
-        cursor: "auto",
-        color: "black",
-        borderBottom: "1px solid black",
-      }
+      textDecoration: "none",
+      cursor: "auto",
+      color: "black",
+      borderBottom: "1px solid black",
+    }
     : {
-        textDecoration: "none",
-        color: "black",
-      };
+      textDecoration: "none",
+      color: "black",
+    };
 };
- 
+
 const HEADER_PAGES = [
   {
     id: 0,
@@ -131,6 +131,7 @@ const Nav: FC = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {HEADER_PAGES.map((item) => {
               const { id, name, path } = item;
+
               return (
                 <Button
                   key={id}
@@ -143,7 +144,7 @@ const Nav: FC = () => {
                   }}
                 >
                   <NavLink style={getButtonStyle} to={path}>
-                    {t(`${name}`)}
+                    {t(name)}
                   </NavLink>
                 </Button>
               );

@@ -11,15 +11,3 @@ export const selectErrorMessage = (state: RootState) => state.news.error;
 export const selectNews = createSelector(selectById, selectIds, (hash, list) =>
   list.map((id) => hash[id])
 );
-
-// export const selectNewsById = createSelector(
-//   selectById,
-//   (_, id) => id,
-//   (hash, id) => hash[id]
-// );
-
-// export const selectNewsByIds = createSelector(
-//   selectById,
-//   (_, ids) => ids,
-//   (hash, ids) => ids.map((id) => hash[id])
-// );

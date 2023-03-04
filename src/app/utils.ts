@@ -1,6 +1,6 @@
-export const toHash = <T extends {id: number}>(array: T[]): Record<string, T> =>
+export const toHash = <T extends { id: number }>(array: T[]): Record<string, T> =>
   array.reduce<Record<string, T>>((acc, current) => {
-      acc[current.id] = current;
+    acc[current.id] = current;
 
     return acc;
   }, {});

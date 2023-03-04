@@ -1,11 +1,11 @@
 import { FC } from "react";
-import {Button, Card, CardContent, CardMedia, Typography} from "@mui/material";
+import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 type NewsCardProps = {
   disabled: boolean
-  id: string
-  onHide: (id: string) => void 
+  id: number
+  onHide: (id: number) => void
   title: string
   url: string
 }
@@ -40,4 +40,4 @@ const NewsCard: FC<NewsCardProps> = ({ disabled, id, onHide, title, url }) => {
   );
 }
 
-export default NewsCard
+export default NewsCard;

@@ -7,8 +7,8 @@ import {
   selectIsAuth,
   selectIsError,
 } from "../app/features/auth";
-import {Box, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, Popper, Alert, AlertTitle } from "@mui/material/";
-import {Visibility, VisibilityOff} from "@mui/icons-material/";
+import { Box, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, Popper, Alert, AlertTitle } from "@mui/material/";
+import { Visibility, VisibilityOff } from "@mui/icons-material/";
 import { LoadingButton } from "@mui/lab";
 import { authenticate } from "../app/features/auth/actions";
 
@@ -23,7 +23,7 @@ const LoginForm: FC = () => {
   const dispatch = useAppDispatch();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  
+
   const loginHandler = (evt: any) => {
     evt.preventDefault();
     const loginData = {

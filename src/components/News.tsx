@@ -1,17 +1,18 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import NewsCard from "./NewsCard";
 import { Box, Grid } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useTranslation } from "react-i18next";
+
 import {
   fetchNews,
   selectIsNewsLoading,
   selectNews,
   selectMaxId,
-  selectErrorMessage
+  selectErrorMessage,
 } from "../app/features/news";
-import { hideTopic } from "app/features/news/slice";
+import { deleteTopic, fetchNewsById } from "app/features/news/actions";
 
 const INITIAL_NEWS_VALUE = 6;
 const ADD_NEWS_VALUE = 6;
@@ -24,25 +25,13 @@ const News: FC = () => {
   const maxId = useAppSelector(selectMaxId);
   const errorMessage = useAppSelector(selectErrorMessage);
 
-  const handleHide = async (id: string) => {
-    dispatch(hideTopic(id));
-    // try {
-    // const response = await fetch(
-    //   getPhotos(Math.max(...items.map((item) => item.id)), 1)
-    // );
-    // const data = await response.json();
-    // setItems((prevData) => {
-    //   const filtered = prevData.filter((item) => item.id !== id);
-    //   return [...filtered, ...data];
-    // });
-    // } catch (error) {
-    //   setError(error);
-    // } finally {
-    // }
+  const handleHide = async (id: number) => {
+    await dispatch(deleteTopic(id))
+    await dispatch(fetchNewsById(maxId + 1))
   };
 
   const handleShowMore = async () => {
-    dispatch(fetchNews({ start: maxId, limit: maxId + ADD_NEWS_VALUE }));
+    dispatch(fetchNews({ start: maxId, limit: ADD_NEWS_VALUE }));
   };
 
   useEffect(() => {

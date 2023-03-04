@@ -22,9 +22,9 @@ const wait = (delay = 500) =>
   });
 
 export const authenticate =
- createAsyncThunk<boolean, Credentials>("auth/authenticate",
-  async (data) => {
-    await wait(500);
+  createAsyncThunk<boolean, Credentials>("auth/authenticate",
+    async (data) => {
+      await wait(500);
 
 
       if (checkCredentials(data)) {
@@ -34,4 +34,4 @@ export const authenticate =
 
       window.localStorage.setItem("user.authenticated", "false");
       return false;
-  });
+    });

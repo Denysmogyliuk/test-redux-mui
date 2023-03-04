@@ -4,5 +4,6 @@ export {
   selectIsNewsLoading,
   selectNews,
   selectMaxId,
-  selectErrorMessage
+  selectErrorMessage,
+  all
 } from "./selectors";

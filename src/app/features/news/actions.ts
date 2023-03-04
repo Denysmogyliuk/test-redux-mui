@@ -6,20 +6,19 @@ type FetchNews = {
   limit: number,
 }
 
-export const fetchNews = createAsyncThunk<News[], FetchNews, {rejectValue: string}>(
+export const fetchNews = createAsyncThunk<News[], FetchNews, { rejectValue: string }>(
   "news/fetchNews",
   async ({ start, limit }, { rejectWithValue }) => {
-    console.log(start, limit)
     try {
       const response = await fetch(
-        `https://jsonplaceholder.typicode.com/photos?_startx=${start}&_limit=${limit}`
+        `https://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${limit}`
       );
 
       if (!response.ok) {
         throw new Error("Server Error!");
       }
 
-      const data:Promise<News[]> = await response.json();
+      const data: Promise<News[]> = await response.json();
 
       return data;
     } catch (error: any) {
@@ -29,25 +28,42 @@ export const fetchNews = createAsyncThunk<News[], FetchNews, {rejectValue: strin
   }
 );
 
-// export const deleteTopic = createAsyncThunk(
-//   "news/deleteTopic",
+export const deleteTopic = createAsyncThunk<string, number>(
+  "news/deleteTopic",
+  async function (id: number, { rejectWithValue, dispatch }) {
+    try {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/photos/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
 
-//   async function (id, { rejectWithValue, dispatch }) {
-//     try {
-//       const response = await fetch(
-//         `https://jsonplaceholder.typicode.com/photos/${id}`,
-//         {
-//           method: "DELETE",
-//         }
-//       );
+      if (!response.ok) {
+        throw new Error("Server Error, can't delete topic");
+      }
 
-//       if (!response.ok) {
-//         throw new Error("Server Error, can't delete topic");
-//       }
+      return String(id)
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
-//       // dispatch(removeTopic({ id }));
-//     } catch (error: any) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const fetchNewsById = createAsyncThunk(
+  "news/fetchNewsById",
+  async function (id: number, { rejectWithValue, dispatch }) {
+    try {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/photos/${id}`
+      );
+      console.log(response);
+
+      const data: Promise<News> = await response.json();
+
+      return data
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { selectIsAuth } from "../app/features/auth";
 import { logout } from "../app/features/auth/slice";
-import {Box, IconButton, Typography, Menu, Avatar, Tooltip, MenuItem } from "@mui/material/";
+import { Box, IconButton, Typography, Menu, Avatar, Tooltip, MenuItem } from "@mui/material/";
 import LoginForm from "./LoginForm";
 import Modal from "./Modal";
 
 const UserSettings: FC = () => {
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const [open, setOpen] = useState<boolean>(false);
   const { t } = useTranslation();
   const isAuthenticated = useAppSelector(selectIsAuth);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const isAuth = useAppSelector(selectIsAuth);
   const dispatch = useAppDispatch();
